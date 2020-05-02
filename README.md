@@ -1,4 +1,4 @@
-#Find a Friend
+# Find a Friend
 Full stack web application using Express. This application will take in results from the survey and compare answers with those from other users and then display the name and picture of the user who is the closest match
 
 ### Use the App
