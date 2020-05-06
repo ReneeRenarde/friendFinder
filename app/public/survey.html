@@ -148,7 +148,8 @@
         </div>
 
         <div class="text-center">
-            <button id="submitBtn" type="submit" class="btn btn-success btn-lg" data-toggle="modal" data-target="#bestFriendModal">Submit</button>
+            <button id="submitBtn" type="submit" class="btn btn-success btn-lg" data-toggle="modal"
+                data-target="#bestFriendModal">Submit</button>
         </div>
 
 
@@ -183,6 +184,9 @@
 
     <script src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
     <script type="text/javascript">
         $("#submitBtn").on("click", function (event) {
@@ -193,9 +197,16 @@
             //no blank answers
             if ($("#name").val() === "" || $("#photo").val() === "") {
                 valid = false;
-            } else if ($("#question1").val() === "empty" || $("#question2").val() === "empty" || $("#question3").val() === "empty" || $("#question4").val() === "empty" || $("#question5").val() === "empty" || $("#question6").val() === "empty" || $("#question7").val() === "empty" || $("#question8").val() === "empty" || $("#question9").val() === "empty" || $("#question10").val() === "empty") {
+
+            } else if ($("#question1").val() === "empty" || $("#question2").val() === "empty" ||
+                $("#question3").val() === "empty" || $("#question4").val() === "empty" ||
+                $("#question5").val() === "empty" || $("#question6").val() === "empty" ||
+                $("#question7").val() === "empty" || $("#question8").val() === "empty" ||
+                $("#question9").val() === "empty" || $("#question10").val() === "empty") {
                 valid = false;
             }
+            console.log($("#name").val())
+            console.log(valid)
 
             if (valid === true) {
                 var newUser = {
@@ -219,6 +230,8 @@
 
                 // Ajax call for receiving response after POST req
                 $.post(currentURL + "/api/friends", newUser, function (data) {
+                    console.log(data)
+
                     $("#bestFriend").text(data.name);
                     $("#bestFriendPhoto").attr("src", data.photo);
                     $("#bestFriendModal").modal("toggle");
